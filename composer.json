@@ -1,5 +1,5 @@
 {
-  "name": "ThreeXSoftware/Postcodes4uAddressLookup",
+  "name": "three-x-software/postcodes4u-address-lookup",
   "description": "Provides an address lookup service on a Magento 2 store powered by the Postcodes4uAddressLookup API",
   "require": {
     "php": "7.*",

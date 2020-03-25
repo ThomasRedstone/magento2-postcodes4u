@@ -3,8 +3,8 @@
 ## Getting started
 
 Install the module using Composer:
-```angular2
-composer require redstonetechnology/magento2-postcodes4u
+```
+three-x-software/postcodes4u-address-lookup
 ```
 
 Once this is finished, enable to module via the admin interface,

@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="threexsoftware" translate="label" sortOrder="10">
+            <label>Postcodes4uAddressLookup</label>
+        </tab>
+        <section id="threexsoftware_sales" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Sales</label>
+            <tab>threexsoftware</tab>
+            <resource>ThreeXSoftware_Postcodes4uAddressLookup::postcodes4u_autocomplete</resource>
+            <group id="autocomplete" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Shipping Address Autocomplete</label>
+                <field id="enable" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Module Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="api_key" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Postcodes4u Api Key</label>
+                </field>
+                <field id="username" translate="label" type="text" sortOrder="21" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Postcodes4u Api Username</label>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

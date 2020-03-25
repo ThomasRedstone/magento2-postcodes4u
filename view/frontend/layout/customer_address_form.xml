@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="checkout" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="ThreeXSoftware_Postcodes4uAddressLookup::css/custom.css" />
+    </head>
+    <body>
+        <referenceContainer name="after.body.start">
+            <block class="ThreeXSoftware\Postcodes4uAddressLookup\Block\Js\Postcodes4u"
+                   name="threexsoftware.postcodes4uaddresslookup.postcodes4uapi.js"
+                   as="postcodes4uapi"
+                   template="ThreeXSoftware_Postcodes4uAddressLookup::js/Postcodes4uApi.phtml" />
+        </referenceContainer>
+        <referenceBlock name="customer_address_edit">
+            <action method="setTemplate">
+                <argument name="template" xsi:type="string">ThreeXSoftware_Postcodes4uAddressLookup::address/edit.phtml</argument>
+            </action>
+        </referenceBlock>
+    </body>
+</page>
+

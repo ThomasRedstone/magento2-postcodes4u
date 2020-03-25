@@ -1,0 +1,28 @@
+.address-btn {
+    margin-top: 10px;
+}
+.show_address {
+    margin-top: 10px;
+}
+ul.address-ul {
+    padding: 8px 10px;
+    border: 1px solid #c2c2c2;
+}
+.address-ul li {
+    list-style-type: none;
+    border-bottom: 1px solid #c2c2c2;
+    cursor: pointer;
+    padding-bottom: 5px;
+}
+.finder-container {
+  position: relative;
+}
+.finder-container .button {
+    margin-top: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+button.address-manual {
+    margin-top: 10px;
+}

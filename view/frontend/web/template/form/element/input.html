@@ -1,0 +1,15 @@
+<div class="finder-container">
+    <input title="Address lookup" class="input-text" type="text" id="lookup" data-bind="
+        value: value,
+        valueUpdate: 'keyup',
+        hasFocus: focused,
+        afterRender: onElementRender($element),
+        attr: {
+            placeholder: placeholder,
+            'aria-describedby': noticeId,
+            disabled: disabled
+        }"/>
+    <button class="button action primary address-btn" data-bind="event: {click: findAddress}"><!-- ko i18n: 'Find address' --><!-- /ko --></button>
+</div>
+<button class="button action primary address-manual" data-bind="visible: !isShowDetails(), event: {click: toggleAddressData}"><!-- ko i18n: 'Enter address manually' --><!-- /ko --></button>
+<div class="show_address"></div>

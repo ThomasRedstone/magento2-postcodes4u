@@ -1,0 +1,92 @@
+<?php
+/**
+ * // @codingStandardsIgnoreFile
+ *
+ * @var $block \ThreeXSoftware\Postcodes4uAddressLookup\Block\Js\Postcodes4uApi
+ */
+?>
+<?php if ($block->isEnabled()) : ?>
+<script>
+    window.ApiKey = '<?php /* @escapeNotVerified */ echo $block->getApiKey(); ?>';
+    <?php if($block->getUsername() != null){ ?>
+    window.UserName = '<?php /* @escapeNotVerified */ echo $block->getUsername(); ?>';
+    <?php } ?>
+</script>
+<script type="text/javascript">
+    function checkoutAddress (id, addressId) {
+        var apiUrl = 'https://services.3xsoftware.co.uk/Search/ById/json?username=' + encodeURI(window.UserName)
+            + '&key=' + encodeURI(window.ApiKey)
+            + '&id=' + encodeURI(id);
+        var _this = jQuery;
+        _this('body').loader('show');
+        _this.ajax({
+                    url: apiUrl,
+                    type: 'GET',
+                    dataType: 'jsonp',
+                    cors: true ,
+                    contentType:'application/json',
+                    secure: true,
+                    showLoader: true,
+                    headers: {
+                      'Access-Control-Allow-Origin': '*',
+                    },
+                    beforeSend: function (xhr) {
+                      xhr.setRequestHeader ('Authorization', 'Basic ' + btoa(''));
+                    },
+                success: function (data){
+                    console.log('success in postcodes4uApi.phtml');
+                    var _data = data.Address;
+					var address = '' + (_data.StreetAddress2 || '') + (_data.StreetAddress3 || '');
+                    switch(addressId) {
+                        case 'shippingAddress':
+                          _this('#shipping-new-address-form input[name="street[0]"]').val(_data.StreetAddress1).trigger('keyup');
+                          _this('#shipping-new-address-form input[name="street[1]"]').val(address).trigger('keyup');
+                          _this('#shipping-new-address-form input[name="city"]').val(_data.PostTown).trigger('keyup');
+                          _this('#shipping-new-address-form input[name="company"]').val(_data.Company).trigger('keyup');
+                          _this('#shipping-new-address-form input[name="postcode"]').val(_data.Postcode).trigger('keyup');
+                          _this('#shipping-new-address-form select[name="country_id"]').val('GB').trigger('change');
+                          _this('#shipping-new-address-form input[name="region"]').val(_data.County).trigger('keyup');
+                          break;
+                        case 'billingAddress':
+                          _this('.billing-address-form input[name="street[0]"]').val(_data.StreetAddress1).trigger('keyup');
+                          _this('.billing-address-form input[name="street[0]"]').val(address).trigger('keyup');
+                          _this('.billing-address-form input[name="city"]').val(_data.PostTown).trigger('keyup');
+                          _this('.billing-address-form input[name="company"]').val(_data.Company).trigger('keyup');
+                          _this('.billing-address-form input[name="postcode"]').val(_data.Postcode).trigger('keyup');
+                          _this('.billing-address-form select[name="country_id"]').val('GB').trigger('change');
+                          _this('.billing-address-form input[name="region"]').val(_data.County).trigger('keyup');
+                          break;
+                        default:
+                          console.log('address Id is different');
+                    }
+                    _this('body').loader('hide');
+                },
+                error: function (data){
+                    _this(data).appendTo('.show_address');
+                    _this('body').loader('hide');
+                    console.log(data);
+                }
+            });  
+    }
+</script>
+<script type="text/javascript">
+  require(['jquery'], function($) {
+    $(document).on('change',"[name='country_id']",function(event) {
+    	console.log('handling change from Postcodes4uApi.phtml');
+		var target = $(event.currentTarget).children("option:selected").val();
+		console.log('target', target);
+		console.log('window.country', window.country);
+    	var api = $('.postcodeApi');
+		var countryId = window.country || target;
+		console.log(countryId);
+        if (countryId === 'GB') {
+        	console.log('showing');
+            api.show();
+        } else {
+        	console.log('hiding');
+            api.hide();
+        }
+    });
+ });
+</script>
+<?php endif;

@@ -1,0 +1,1 @@
+{"version":3,"sources":["frontend/requirejs-config.js"],"names":["config"],"mappings":";;AAAA,IAAMA,SAAS;AACX,aAAS;AACL,oCAA4B;AADvB;AADE,CAAf","file":"requirejs-config.js","sourcesContent":["const config = {\n    \"paths\": {\n        \"Postcodes4uAddressLookup\": \"ThreeXSoftware_Postcodes4uAddressLookup/js\",\n    },\n};\n"]}

@@ -1,0 +1,21 @@
+{
+  "name": "ThreeXSoftware_Postcodes4uAddressLookup",
+  "description": "Provides an address lookup service on a Magento 2 store powered by the Postcodes4uAddressLookup API",
+  "require": {
+    "php": "7.*",
+    "magento/product-community-edition": "^2.1"
+  },
+  "version": "1.2.0",
+  "type": "magento2-module",
+  "license": [
+    "MIT"
+  ],
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "ThreeXSoftware\\Postcodes4uAddressLookup\\": ""
+    }
+  }
+}
